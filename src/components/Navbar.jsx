@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate, useLocation, Navigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { ReactComponent as OfferIcon } from '../assets/svg/localOfferIcon.svg';
 import { ReactComponent as ExplorerIcon } from '../assets/svg/exploreIcon.svg';
 import { ReactComponent as PersonOutlineIcon } from '../assets/svg/personOutlineIcon.svg';
@@ -24,7 +24,15 @@ export default function Navbar() {
               width='36px'
               height='36px'
             />
-            <p>Explore</p>
+            <p
+              className={
+                pathMatchRoute('/')
+                  ? 'navBarListItemNameActive'
+                  : 'navBarListItemNameActive'
+              }
+            >
+              Explore
+            </p>
           </li>
           <li className='navbarListItem' onClick={() => navigate('/offers')}>
             <OfferIcon
@@ -32,7 +40,11 @@ export default function Navbar() {
               width='36px'
               height='36px'
             />
-            <p>Offer</p>
+            <p  className={
+                pathMatchRoute('/offers')
+                  ? 'navBarListItemNameActive'
+                  : 'navBarListItemNameActive'
+              }>Offer</p>
           </li>
           <li className='navbarListItem' onClick={() => navigate('/profile')}>
             <PersonOutlineIcon
@@ -40,7 +52,11 @@ export default function Navbar() {
               width='36px'
               height='36px'
             />
-            <p>Profile</p>
+            <p  className={
+                pathMatchRoute('/profile')
+                  ? 'navBarListItemNameActive'
+                  : 'navBarListItemNameActive'
+              }>Profile</p>
           </li>
         </ul>
       </nav>
