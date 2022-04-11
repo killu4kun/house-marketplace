@@ -44,7 +44,7 @@ export default function Navbar() {
                 pathMatchRoute('/offers')
                   ? 'navBarListItemNameActive'
                   : 'navBarListItemNameActive'
-              }>Offer</p>
+              }>Offers</p>
           </li>
           <li className='navbarListItem' onClick={() => navigate('/profile')}>
             <PersonOutlineIcon
