@@ -3,14 +3,12 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getDoc, doc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { db } from '../firebase-config';
-import 'swiper/css';
+import 'swiper/css/bundle';
 import Spinner from '../components/Spinner';
 import shareIcon from '../assets/svg/shareIcon.svg';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-SwiperCore.use([Navigation,Pagination,Scrollbar,A11y]);
-
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
 function SingleListing() {
   const [listing, setListing] = useState(null);
@@ -43,14 +41,20 @@ function SingleListing() {
 
   return (
     <main>
-      <Swiper slidesPerView={1} pagination={{ clickable: true }}>
+      <Swiper
+        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+        scrollbar={{ draggable: true }}
+        navigation
+      >
         {listing.imageUrls.map((url, index) => (
           <SwiperSlide key={index}>
             <div
               style={{
                 background: `url(${listing.imageUrls[index]})center no-repeat`,
                 backgroundSize: 'cover',
-                height: '20rem',
+                height: '19rem',
               }}
               className='swiperSlideDiv'
             ></div>
