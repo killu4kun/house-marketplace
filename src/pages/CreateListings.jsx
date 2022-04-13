@@ -66,6 +66,7 @@ function CreateListings() {
     return () => {
       isMounted.current = false;
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMounted]);
 
   const onSubmit = async (e) => {
@@ -105,7 +106,6 @@ function CreateListings() {
     } else {
       geolocation.lat = latitude;
       geolocation.lng = longitude;
-      location = address;
     }
 
     //Store images in firebase
@@ -162,9 +162,9 @@ function CreateListings() {
       timestamp: serverTimestamp(),
     };
 
+    formDataCopy.location = address;
     delete formDataCopy.images;
     delete formDataCopy.address;
-    location && (formDataCopy.location = location);
     !formDataCopy.offer && delete formDataCopy.offer;
 
     const docRef = await addDoc(collection(db, 'listings'), formDataCopy);
